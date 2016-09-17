@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
+var articles={
+    'article-one':{
     title:"Article-One|Sagar Varma",
     heading:"Article One",
     content:`<p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
@@ -14,11 +15,8 @@ var articleOne={
         
         <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
         
-        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`
-        
-};
-
-var articleTwo={
+        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`},
+    'artile-two':{
      title:"Article-Two|Sagar Varma",
     heading:"Article Two",
     content:`<p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
@@ -27,12 +25,8 @@ var articleTwo={
         
         <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
         
-        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`
-    
-};
-
-var articleThree={
-     title:"Article-Three|Sagar Varma",
+        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`},
+    'article-three':{ title:"Article-Three|Sagar Varma",
     heading:"Article Three",
     content:`<p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
         
@@ -40,8 +34,9 @@ var articleThree={
         
         <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>
         
-        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`
-}
+        <p>This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.This is my content.</p>`}
+};
+    
 
 function createHtmlTemplate(data){
     
@@ -78,16 +73,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res) {
-   res.send(createHtmlTemplate(articleOne));
-});
-
-app.get('/article-two',function(req,res) {
-   res.send(createHtmlTemplate(articleTwo)); 
-});
-
-app.get('/article-three',function(req,res) {
-   res.send(createHtmlTemplate(articleThree)); 
+app.get('/:articleName',function(req,res) {
+   res.send(createHtmlTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
