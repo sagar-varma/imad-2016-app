@@ -1,2 +1,2 @@
 console.log('Loaded!');
-document.getElementById('demo').innerHtml="sagar";
+document.getElementById('demo').innerHTML="sagar";
