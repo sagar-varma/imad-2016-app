@@ -16,7 +16,7 @@ submit.onclick=function() {
                 var list='';
                 
                 for(var i=0;i<comments.length;i++) {
-                    list= "<li>" + comments[i] + "</li>"
+                    list += "<li>" + comments[i] + "</li>"
                 }
                 
                 var ui=document.getElementById('ul_comment');
@@ -28,7 +28,7 @@ submit.onclick=function() {
     var commentInput=document.getElementById('comment');
     var comment = commentInput.value;
     
-    request.open('GET',"http://sagar-varma.imad.hasura-app.io/submit-comment?comment" + comment , true);
+    request.open('GET','http://sagar-varma.imad.hasura-app.io/submit-comment?comment=' + comment , true);
     request.send(null);
     
 }
