@@ -63,7 +63,20 @@ function createHtmlTemplate(data){
     <div>
       ${content}
     </div>
+    <h3>Comments...</h3>
+    <hr/>
+    <br/>
+    <div>
+       <input type="text" placeholder="Comment Here..." id="comment"></inout>
+       <input type="submit" value="Submit" id="sub_comment"></input>
+</div>
+    <div>
+        <h3>Previous Comments...</h3>
+        <hr/>
+        <ul id="ul_comment">
+        </ul>
     </div>
+</div>
     </body>
 </html>
 `
