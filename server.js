@@ -67,8 +67,8 @@ function createHtmlTemplate(data){
     <hr/>
     <br/>
     <div>
-       <input type="text" placeholder="Comment Here..." id="comment"></inout>
-       <input type="submit" value="Submit" id="sub_comment"></input>
+       <input type="text" placeholder="Comment Here..." id="comment"/>
+       <input type="submit" value="Submit" id="sub_comment"/>
 </div>
     <div>
         <h3>Previous Comments...</h3>
@@ -78,7 +78,7 @@ function createHtmlTemplate(data){
     </div>
 </div>
  <script type="text/javascript" src="/ui/main.js">
-        </script>
+</script>
     </body>
 </html>
 `
@@ -93,6 +93,7 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 var comments =[];
+
 app.get('/submit-comment', function(req,res) {
     
     var comment=req.query.comment;
